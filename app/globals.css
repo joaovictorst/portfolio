@@ -1,0 +1,53 @@
+@import url('https://fonts.cdnfonts.com/css/w95fa');
+@import url('https://cdn.jsdelivr.net/fontsource/css/win95fa@latest/index.css');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+* {
+  font-family: 'W95FA', sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: none;
+  font-family: 'WIN95FA', sans-serif;
+  font-smooth: never;
+}
+
+
+.win95-tip-box {
+  background-color: #ffffff;
+  
+  background-image: 
+    linear-gradient(45deg, #ffff00 25%, transparent 25%), 
+    linear-gradient(-45deg, #ffff00 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #ffff00 75%), 
+    linear-gradient(-45deg, transparent 75%, #ffff00 75%);
+    
+  background-size: 2px 2px;
+  background-position: 0 0, 0 1px, 1px -1px, -1px 0px;
+
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  box-shadow: inset 1px 1px 0px #000000;
+}

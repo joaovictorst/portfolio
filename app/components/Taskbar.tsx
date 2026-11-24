@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Cmd from "./Cmd";
 import SimpleModal from "./SimpleModal";
 import StartButton from "./StartMenu";
 
@@ -20,10 +21,11 @@ function Clock() {
 
 export default function Taskbar() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [cmdOpen, setCmdOpen] = useState(false);
 
   return (
     <footer className="flex items-center gap-1 px-1 shrink-0 h-10 bg-[#c0c0c0] border-t-2 border-t-white shadow-[inset_0_1px_0_#dfdfdf] select-none">
-      <StartButton />
+      <StartButton onExecutar={() => setCmdOpen(true)} />
       <div className="w-px h-6 bg-[#808080] border-r border-r-white mx-0.5" />
       <div className="flex-1" />
       <div className="flex items-center gap-2 h-7 px-2 shadow-[inset_1px_1px_0_#808080,inset_-1px_-1px_0_#fff]">
@@ -38,6 +40,11 @@ export default function Taskbar() {
       </div>
 
       {modalOpen && <SimpleModal onClose={() => setModalOpen(false)} />}
+      {cmdOpen && (
+        <div className="fixed inset-0 z-50 pointer-events-none">
+          <Cmd onClose={() => setCmdOpen(false)} />
+        </div>
+      )}
     </footer>
   );
 }

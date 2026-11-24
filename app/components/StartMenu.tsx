@@ -2,17 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const items = [
-  { icon: "/icons/programs-32x32.png",  label: "Programas" },
-  { icon: "/icons/start-settings-32x32.png", label: "Configurações" },
-  { icon: "/icons/find-file-32x32.png", label: "Localizar" },
-  { icon: "/icons/help-32x32.png",      label: "Ajuda" },
-  { icon: "/icons/run-32x32.png",       label: "Executar..." },
-  null,
-  { icon: "/icons/shutdown-32x32.png",  label: "Desligar..." },
-];
+type MenuItem = { icon: string; label: string; onClick?: () => void };
 
-export default function StartButton() {
+function buildItems(callbacks: { onExecutar?: () => void }): (MenuItem | null)[] {
+  return [
+    { icon: "/icons/programs-32x32.png",      label: "Programas" },
+    { icon: "/icons/start-settings-32x32.png", label: "Configurações" },
+    { icon: "/icons/find-file-32x32.png",      label: "Localizar" },
+    { icon: "/icons/help-32x32.png",           label: "Ajuda" },
+    { icon: "/icons/msdos-32x32.png",          label: "MS-DOS Prompt...", onClick: callbacks.onExecutar },
+    null,
+    { icon: "/icons/shutdown-32x32.png",       label: "Desligar..." },
+  ];
+}
+
+export default function StartButton({ onExecutar }: { onExecutar?: () => void }) {
+  const items = buildItems({ onExecutar });
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -46,7 +51,7 @@ export default function StartButton() {
                 ) : (
                   <div
                     key={item.label}
-                    onClick={() => setOpen(false)}
+                    onClick={() => { setOpen(false); item.onClick?.(); }}
                     className="flex items-center gap-2 px-2 py-1 cursor-pointer hover:bg-[#000080] hover:text-white text-[13px]"
                   >
                     <img src={item.icon} alt="" className="w-6 h-6 [image-rendering:pixelated] shrink-0" />

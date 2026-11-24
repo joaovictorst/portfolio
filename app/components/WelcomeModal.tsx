@@ -9,9 +9,10 @@ export default function WelcomeModal({ onClose, onOpenProjetos }: { onClose: () 
 
   const tips = [
     "Aqui você encontrará informações sobre mim, meus projetos e como entrar em contato. Sinta-se à vontade para explorar!",
-    "Você pode arrastar as janelas pela barra de título, igual ao Windows 95.",
-    "Clique duas vezes nos ícones do desktop para abrir as janelas.",
-    "Use o botão de áudio na taskbar para ouvir um som clássico.",
+    <span>No ícone <img src="/icons/my-computer-32x32.png" alt="Sobre mim" className="inline w-8 h-8 [image-rendering:pixelated] align-middle" /> você pode acessar informações sobre mim, minhas stacks e linguagens nas quais já trabalhei/trabalho.</span>,
+    <span>No ícone <img src="/icons/mail-32x32.png" alt="Contato" className="inline w-8 h-8 [image-rendering:pixelated] align-middle" /> você encontra meus links de contato, como LinkedIn e GitHub.</span>,
+    <span>Na <img src="/icons/recycle-bin-32x32.png" alt="Lixeira" className="inline w-8 h-8 [image-rendering:pixelated] align-middle" /> você pode encontrar algumas ideias minhas que foram descartadas ao longo do tempo.</span>,
+    <span>No ícone <img src="/icons/my-documents-folder-32x32.png" alt="Projetos" className="inline w-8 h-8 [image-rendering:pixelated] align-middle" /> você pode ver os meus projetos atuais.</span>,
   ];
 
   function onMouseDown(e: React.MouseEvent) {
